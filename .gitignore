@@ -1,0 +1,7 @@
+# ignore node_modules
+**/node_modules/
+npm-debug.log
+npn-debug.log
+**/html_components/
+/nbproject/private/
+/nbproject
