@@ -37,6 +37,10 @@ $font-fu-l: "futura_lightregular";
     -moz-shadow: $param1 $param2 1px $color;
 }
 
+body{
+    overflow: hidden;
+    font-family: $font-fu-l;
+}
 ul {
     li{
         list-style: none;

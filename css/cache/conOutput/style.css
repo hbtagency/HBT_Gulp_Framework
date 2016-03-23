@@ -6557,19 +6557,30 @@ button.list-group-item-danger.active:focus {
 
 /* Cross browser */
 
+body {
+  overflow: hidden;
+  font-family: "futura_lightregular";
+}
+
 ul li {
   list-style: none;
 }
 
 /* End of global */
 
-body {
-  background-color: #fff;
+.properties_list {
+  border: 3px dashed #044;
+  margin: 30px 0;
+  padding: 30px 55px;
+}
+
+.properties_list .properties_item {
+  background-color: #f2f2f2;
 }
 
 nav {
   width: 100%;
-  padding: 20px 0;
+  padding: 10px 0;
   background-color: #f2f2f2;
   text-align: center;
 }
