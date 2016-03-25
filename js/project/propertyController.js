@@ -3,8 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-var properties = {
-    "results": [{
+
+var mainApp = angular.module('mainApp',[]);
+
+mainApp.controller('propertyController', ["$scope",function($scope){
+   $scope.properties =  {
+    "results": [{ 
             "price": "$726,500",
             "agency": {
                 "brandingColors": {
@@ -37,18 +41,40 @@ var properties = {
             "id": "3",
             "mainImage": "http://i4.au.reastatic.net/640x480/98cee1b2a3a64329921fc38f7e2926a78d41fcc683fc48fb8a8ef2999b14c027/main.jpg"
         }],
-    "saved": [{
-            "price": "$526,500",
-            "agency": {
-                "brandingColors": {
-                    "primary": "#000000"
-                },
-                "logo": "http://i2.au.reastatic.net/agencylogo/WVYSSK/2/20140701084436.gif"
-            },
-            "id": "4",
-            "mainImage": "http://i2.au.reastatic.net/640x480/5e84d96722dda3ea2a084d6935677f64872d1d760562d530c3cabfcb7bcda9c2/main.jpg"
-        }]
-}
+    "saved": []
+    };
+    
+   $scope.addProperty = function(index){
+       var item_to_be_added = $scope.properties.results[index];
+       var saved_list = $scope.properties.saved;
+       if($scope.uniqueCheck(item_to_be_added,saved_list)){
+            saved_list.push(item_to_be_added);
+       }
+   };
+   
+   $scope.isEmpty = function(){
+       if($scope.properties.saved.length > 0){
+           return false;
+       }else{
+           return true;
+       }
+   };
+      
+   $scope.removeProperty = function(index){
+       $scope.properties.saved.splice(index,1);
+   };
+   
+   $scope.uniqueCheck = function(property_to_be_added,savedProperties){
+        var flag = true;
+        if(savedProperties.length > 0){
+            for(var i=0;i<savedProperties.length;i++){
+                if(property_to_be_added.id === savedProperties[i].id){
+                    flag = false;
+                }
+            }
+        }
+       return flag;
+   }
+}]);
 
-$(function () {
-})
+

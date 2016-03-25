@@ -6558,7 +6558,7 @@ button.list-group-item-danger.active:focus {
 /* Cross browser */
 
 body {
-  overflow: hidden;
+  overflow-x: hidden;
   font-family: "futura_lightregular";
 }
 
@@ -6569,22 +6569,101 @@ ul li {
 /* End of global */
 
 .properties_list {
-  border: 3px dashed #044;
+  border: 3px dashed #e3e3e3;
   margin: 30px 0;
   padding: 30px 55px;
 }
 
-.properties_list .properties_item {
-  background-color: #f2f2f2;
+.left-col {
+  padding: 30px 30px;
+}
+
+.properties_list {
+  font-size: 18px;
+}
+
+.properties_list h2 {
+  text-align: center;
+  padding: 15px 0;
+}
+
+.properties_list section.properties_item {
+  margin-bottom: 30px;
+  border: 1px solid #f2f2f2;
+  position: relative;
+}
+
+.properties_list section.properties_item .row-group {
+  width: 100%;
+  display: block;
+  clear: both;
+}
+
+.properties_list section.properties_item .price {
+  padding: 10px 20px;
+}
+
+.properties_list section.properties_item div.overlay {
+  width: 100%;
+  height: 100%;
+  display: block;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  display: hidden;
+}
+
+.properties_list section.properties_item div.overlay span {
+  font-size: 50px;
+  width: 40px;
+  height: 40px;
+  color: #fff;
+  padding: 0;
+  display: none;
+  position: absolute;
+  font-weight: bold;
+  top: 50%;
+  left: 50%;
+  margin-left: -20px;
+  margin-top: -30px;
+}
+
+.properties_list section.properties_item div.overlay span:hover {
+  cursor: pointer;
+}
+
+.properties_list_storage section.properties_item .overlay span {
+  font-size: 80px !important;
+  margin-top: -50px !important;
+  font-weight: lighter !important;
+}
+
+.showOverlay .overlay {
+  display: block !important;
+}
+
+.showOverlay .overlay span {
+  display: block !important;
+}
+
+.hideOverlay .overlay {
+  display: none !important;
+}
+
+.hideOverlay .overlay span {
+  display: block !important;
 }
 
 nav {
   width: 100%;
   padding: 10px 0;
-  background-color: #f2f2f2;
+  background-color: #000;
   text-align: center;
 }
 
 nav ul li {
   font-size: 30px;
+  color: #fff;
+  text-transform: uppercase;
 }

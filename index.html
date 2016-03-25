@@ -11,10 +11,17 @@
         <title> Home | Property List </title> 
         <!-- Title of the page | Site name from Global Settings -->
         <link rel="stylesheet" href="css/final/style.css">
+        
         <script type="text/javascript" src="js/final/sitewide.js"></script>
+        <!--
+        <script type="text/javascript" src="js/jquery/jquery-2.1.4.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/angular/angular.min.js"></script>
+        <script type="text/javascript" src="js/project/propertyController.js"></script>
+                                           -->
     </head>
 
-    <body>
+    <body ng-app="mainApp">
         <header>
             <nav class="container-fluid">
                 <ul>
@@ -22,22 +29,38 @@
                 </ul>
             </nav>
         </header>  
-        <div id="test" class="container">
-            <div class="col-sm-5 col-xs-6 properties_list properties_list_full">
-                <section class="properties_item clearfix">
-                    <span class="row-group logo"><img class="logo" src=""/></span>
-                    <span class="row-group featured_img"><img class="img-responsive" src=""/></span>
-                    <span class="row-group price">Price</span>
+        <div class="container" ng-controller="propertyController">
+            <div class="col-sm-3 hidden-xs left-col">
+                <h2>You have heaps of options from the left column and by hover and click "+", your options will be saved!</h2>
+            </div>
+            <div class="col-sm-4 col-xs-6 properties_list properties_list_full clearfix">
+                <h2>Select a Property</h2>
+
+                <section ng-repeat="property in properties.results" class="properties_item clearfix" ng-class="{showOverlay:hovered,hideOverlay:!hovered}"  ng-mouseenter="hovered = true" ng-mouseleave="hovered = false">
+                    <span class="row-group logo" style="background-color:{{property.agency.brandingColors.primary}}"><img class="logo" ng-src="{{property.agency.logo}}"/></span>
+                    <span class="row-group featured_img"><img class="img-responsive" ng-src="{{property.mainImage}}"/></span>
+                    <span class="row-group price">{{property.price}}</span>
+                    <div class="overlay full-space">
+                        <span class="clearfix" ng-click="addProperty($index)">
+                            +
+                        </span>
+                    </div>
                 </section>
             </div>
-            <div class="col-sm-2 hidden-xs">
+            <div class="col-sm-1 hidden-xs">
                 
             </div>
-            <div class="col-sm-5 col-xs-6 properties_list properties_list_storage">
-                <section class="properties_item clearfix">
-                    <span class="row-group logo"><img class="logo" src=""/></span>
-                    <span class="row-group featured_img"><img class="img-responsive" src=""/></span>
-                    <span class="row-group price">Price</span>
+            <div class="col-sm-4 col-xs-6 properties_list properties_list_storage" ng-hide="isEmpty()" onHoverActions>
+                <h2>Saved Properties</h2>
+                <section ng-repeat="property in properties.saved" class="properties_item clearfix" ng-class="{showOverlay:hovered,hideOverlay:!hovered}"  ng-mouseenter="hovered = true" ng-mouseleave="hovered = false">
+                    <span class="row-group logo" style="background-color:{{property.agency.brandingColors.primary}}"><img class="logo" ng-src="{{property.agency.logo}}"/></span>
+                    <span class="row-group featured_img"><img class="img-responsive" ng-src="{{property.mainImage}}"/></span>
+                    <span class="row-group price">{{property.price}}</span>
+                    <div class="overlay full-space">
+                        <span class="clearfix" ng-click="removeProperty($index)">
+                            -
+                        </span>
+                    </div>
                 </section>
             </div>
         </div>

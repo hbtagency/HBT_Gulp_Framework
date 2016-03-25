@@ -90,7 +90,7 @@ gulp.task('minify-js', function () {
 //Step 5: concat sitewide js
 gulp.task('concat-js', function () {
     console.log('#=>concat-js');
-    return gulp.src(['js/jquery/*.js','js/bootstrap/*.js','js/angular/angular.min.js','js/angular/angular-animate.js','js/cache/*.js'])
+    return gulp.src(['js/jquery/*.js','js/bootstrap/*.js','js/angular/angular.min.js','js/cache/*.js'])
       .pipe(concat("sitewide.js"))
       .pipe(gulp.dest('js/final/'));
 });
