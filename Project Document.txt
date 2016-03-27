@@ -1,0 +1,55 @@
+Regarding Development Environment: 
+  
+The interview solution is set up with Gulp + SASS + Angular. 
+I know there were heaps of better task builders frameworks eg: https://github.com/Swiip/generator-gulp-angular, which takes bit process of installation.
+So I choose to write a simple one and hope that's easier for the question examiner. 
+
+How to install: 
+1. Please put source code under a server www folder(wamp), and create a subfolder "property_list"
+2. In "$server/www/property_list/" start a command console and run "npm install" (with administrator permission in windows)
+3. In "$server/www/property_list/" run "gulp" to start the project.
+
+Regarding Folder Structure: 
+    root
+         - css
+           -- bootstrap
+           -- cache
+           -- final
+           -- fonts
+           -- project
+         - js
+           -- angular
+           -- bootstrap
+           -- cache
+           -- final
+           -- jquery
+           -- project
+     index.html
+
+Gulp will minify and concat css(SCSS to CSS first) and js in proper order, and per modification to any files under project folder, index.html will reload by "BrowserSync"
+which is pretty standard process of script preprocessing. 
+Regarding AngularJs, it is Angular 1 which came first to my head as a straigh solution. I was trying to play more with ES6 or Typescript, but as I stuck with setting 
+it up with Gulp, and my holiday is mostly occupied with travelling plans, so I just hand in what I most familiar this time. 
+
+Regarding Testing: 
+
+I could brief my basic ideas whic are: 
+1. Unit test(Jasmine or other) against anular controller methods.
+2. Behavior test to similate functional logic, which should cover: 
+
+     1> See all available properties listed out
+     2> See see corresponding content of property items are correct to the backend. 
+     3> Click add a property to saved list should see corresponding property be added to the saved list on right hand column.
+     4> Click to add a different property should see corresponding property be added to the saved list on right hand column.
+     5> Click to add a same property as step 3 did should not see corresponding item be added twice and should be with no exceptions. 
+     6> Add a third property to saved list. 
+     7> Remove the second item in saved list should not see anyothers affected. 
+     8> Re-insert second property should see it is ordered as default in the 3rd place in saved list column. 
+     9> Remove all saved property item one by one should see right column disappear, rather than showing a blank box. 
+
+Regarding Cusomized Code: 
+Please find my solutions in propertyController.js, and it is taking and saving values just within object($scope). 
+But let me know if it is required to include real database, so I could set up a angular service and implement ajax or interaction with mongo DB or firebase. 
+
+
+
