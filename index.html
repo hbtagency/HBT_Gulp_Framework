@@ -13,12 +13,16 @@
         <link rel="stylesheet" href="css/final/style.css">
         
         <script type="text/javascript" src="js/final/sitewide.js"></script>
+        
         <!--
         <script type="text/javascript" src="js/jquery/jquery-2.1.4.min.js"></script>
         <script type="text/javascript" src="js/bootstrap/bootstrap.min.js"></script>
         <script type="text/javascript" src="js/angular/angular.min.js"></script>
         <script type="text/javascript" src="js/project/propertyController.js"></script>
-                                           -->
+        <script type="text/javascript" src="js/project/propertyService.js"></script>
+        -->
+
+
     </head>
 
     <body ng-app="mainApp">
@@ -35,7 +39,6 @@
             </div>
             <div class="col-sm-4 col-xs-6 properties_list properties_list_full clearfix">
                 <h2>Select a Property</h2>
-
                 <section ng-repeat="property in properties.results" class="properties_item clearfix" ng-class="{showOverlay:hovered,hideOverlay:!hovered}"  ng-mouseenter="hovered = true" ng-mouseleave="hovered = false">
                     <span class="row-group logo" style="background-color:{{property.agency.brandingColors.primary}}"><img class="logo" ng-src="{{property.agency.logo}}"/></span>
                     <span class="row-group featured_img"><img class="img-responsive" ng-src="{{property.mainImage}}"/></span>

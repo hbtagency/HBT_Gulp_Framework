@@ -1,0 +1,1 @@
+mainApp.factory("propertyService",["$http",function(r){var t={};return t.getProperties=function(){return r.get("data/properties.json")},t}]);

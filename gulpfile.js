@@ -12,7 +12,7 @@ var concat = require('gulp-concat');
 gulp.task('default', function() {
   browserSync.init({
         //change proxy server to your localhost
-        proxy: "http://localhost/property_list/",
+        proxy: "http://localhost/HBT_Gulp_Framework/",
     });
 
   gulp.start('sass');

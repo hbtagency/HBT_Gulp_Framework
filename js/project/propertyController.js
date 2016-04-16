@@ -1,49 +1,22 @@
 /* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Controller should just focus on logic and functions.
  */
 
 var mainApp = angular.module('mainApp',[]);
 
-mainApp.controller('propertyController', ["$scope",function($scope){
-   $scope.properties =  {
-    "results": [{ 
-            "price": "$726,500",
-            "agency": {
-                "brandingColors": {
-                    "primary": "#ffe512"
-                },
-                "logo": "http://i1.au.reastatic.net/agencylogo/XRWXMT/12/20120927204448.gif"
-            },
-            "id": "1",
-            "mainImage": "http://i2.au.reastatic.net/640x480/20bfc8668a30e8cabf045a1cd54814a9042fc715a8be683ba196898333d68cec/main.jpg"
-
-        }, {
-            "price": "$560,520",
-            "agency": {
-                "brandingColors": {
-                    "primary": "#fcfa3b"
-                },
-                "logo": "http://i4.au.reastatic.net/agencylogo/BFERIC/12/20150619122858.gif"
-            },
-            "id": "2",
-            "mainImage": "http://i1.au.reastatic.net/640x480/88586227f9176f602d5c19cf06261108dbb29f03e30d1c4ce9fc2b51fb1e4bd6/main.jpg"
-
-        }, {
-            "price": "$826,500",
-            "agency": {
-                "brandingColors": {
-                    "primary": "#57B5E0"
-                },
-                "logo": "http://i1.au.reastatic.net/agencylogo/XCEWIN/12/20150807093203.gif"
-            },
-            "id": "3",
-            "mainImage": "http://i4.au.reastatic.net/640x480/98cee1b2a3a64329921fc38f7e2926a78d41fcc683fc48fb8a8ef2999b14c027/main.jpg"
-        }],
-    "saved": []
-    };
+mainApp.controller('propertyController', 
+   ["$scope","propertyService",
+   function($scope,propertyService){
     
+    //Get properties from propertyService, and handle in case success or fail.
+    propertyService.getProperties()
+    .success(function (data) {
+        $scope.properties = data;
+    })
+    .error(function (error) {
+        $scope.properties = {};
+    });
+   
    $scope.addProperty = function(index){
        var item_to_be_added = $scope.properties.results[index];
        var saved_list = $scope.properties.saved;
@@ -53,11 +26,15 @@ mainApp.controller('propertyController', ["$scope",function($scope){
    };
    
    $scope.isEmpty = function(){
-       if($scope.properties.saved.length > 0){
-           return false;
-       }else{
-           return true;
-       }
+       if($scope.properties !== undefined){
+            if($scope.properties.saved.length > 0){
+                return false;
+            }else{
+                return true;
+            }
+        }else{
+            return false;
+        }
    };
       
    $scope.removeProperty = function(index){
